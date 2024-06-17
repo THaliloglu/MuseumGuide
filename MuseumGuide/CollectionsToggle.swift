@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A view that provides a navigation link to the CollectionsView.
 struct CollectionsToggle: View {
     var body: some View {
         NavigationLink(destination: CollectionsView()) {
