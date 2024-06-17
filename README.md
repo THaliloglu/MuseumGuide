@@ -9,6 +9,7 @@ Welcome to the MuseumGuide VisionOS project! This project is an interactive muse
 - [Requirements](#requirements)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
+- [VoiceOver Compatibility](#voiceover-compatibility)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -53,6 +54,15 @@ The MuseumGuide app provides users with an interactive way to explore museum col
 - **LearnMoreView.swift**: Displays additional information about a collection item.
 - **MuseumGuideApp.swift**: Entry point for the application, setting up the main scenes.
 - **WelcomeView.swift**: Initial view welcoming users to the app.
+
+## VoiceOver Compatibility
+
+To ensure the app is accessible to all users, including those who rely on VoiceOver, the following accessibility features have been added:
+
+- **Accessibility Labels**: Custom labels are provided to describe the content of each view and element.
+- **Accessibility Hints**: Additional hints are provided to help users understand the actions they can take.
+- **Combined Elements**: Related elements are grouped together to be read as a single item.
+- **Accessible Gestures**: Gestures are optimized to ensure they are recognized correctly by VoiceOver.
 
 ## Contributing
 
