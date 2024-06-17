@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,7 @@
 		38E4A4C12C1E389600EC2A6E /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E4A4C02C1E389600EC2A6E /* Components.swift */; };
 		38E4A4C32C1E3FCA00EC2A6E /* LearnMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E4A4C22C1E3FCA00EC2A6E /* LearnMoreView.swift */; };
 		38E4A4C52C1F97F300EC2A6E /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E4A4C42C1F97F300EC2A6E /* ColorExtension.swift */; };
+		38E4A4C82C1FDBA100EC2A6E /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 38E4A4C72C1FDBA100EC2A6E /* RealityKitContent */; };
 		38EF40562C1125CC00527EC7 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF40552C1125CC00527EC7 /* AppModel.swift */; };
 		38EF40582C1128DA00527EC7 /* CollectionVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF40572C1128DA00527EC7 /* CollectionVolumeView.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38E4A4C82C1FDBA100EC2A6E /* RealityKitContent in Frameworks */,
 				38124A3E2C09224100064FF6 /* RealityKitContent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,6 +154,7 @@
 			name = MuseumGuide;
 			packageProductDependencies = (
 				38124A3D2C09224100064FF6 /* RealityKitContent */,
+				38E4A4C72C1FDBA100EC2A6E /* RealityKitContent */,
 			);
 			productName = MuseumGuide;
 			productReference = 38124A382C09224100064FF6 /* MuseumGuide.app */;
@@ -181,6 +184,9 @@
 				Base,
 			);
 			mainGroup = 38124A2F2C09224100064FF6;
+			packageReferences = (
+				38E4A4C62C1FDBA100EC2A6E /* XCLocalSwiftPackageReference "Packages/RealityKitContent" */,
+			);
 			productRefGroup = 38124A392C09224100064FF6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -424,8 +430,19 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		38E4A4C62C1FDBA100EC2A6E /* XCLocalSwiftPackageReference "Packages/RealityKitContent" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/RealityKitContent;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		38124A3D2C09224100064FF6 /* RealityKitContent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RealityKitContent;
+		};
+		38E4A4C72C1FDBA100EC2A6E /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealityKitContent;
 		};
