@@ -9,11 +9,12 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
+/// A view that displays the name and description of a collection item with a toggle for more information.
 public struct LearnMoreView: View {
-
+    
     let name: String
     let description: String
-        
+    
     @State private var showingMoreInfo = false
     @Namespace private var animation
     
@@ -45,6 +46,7 @@ public struct LearnMoreView: View {
                         Text(description)
                             .font(descriptionFont)
                     }
+                    .transition(.opacity)
                 }
             }
             .frame(width: 408)
@@ -67,8 +69,10 @@ public struct LearnMoreView: View {
         }
     } attachments: {
         Attachment(id: "z") {
-            LearnMoreView(name: "Phoenix Lake",
-                          description: "Lake · Northern California")
+            LearnMoreView(
+                name: "Phoenix Lake",
+                description: "Lake · Northern California"
+            )
         }
     }
 }
