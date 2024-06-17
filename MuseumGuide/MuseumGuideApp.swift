@@ -38,6 +38,11 @@ struct MuseumGuideApp: App {
     }
     
     init() {
+        registerPointOfInterestComponents()
+    }
+    
+    /// Registers the Point of Interest components used in the app.
+    private func registerPointOfInterestComponents() {
         PointOfInterestComponent.registerComponent()
         PointOfInterestRuntimeComponent.registerComponent()
     }
