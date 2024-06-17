@@ -26,34 +26,27 @@ struct ImmersiveView: View {
                 if let immersiveScene = try? await Entity(named: "ImmersiveScene", in: realityKitContentBundle) {
                     content.add(immersiveScene)
                     
-                    subscriptions.append(content.subscribe(to: ComponentEvents.DidAdd.self, componentType: PointOfInterestComponent.self, { event in
+                    subscriptions.append(content.subscribe(to: ComponentEvents.DidAdd.self, componentType: PointOfInterestComponent.self) { event in
                         createLearnMoreView(for: event.entity)
-                    }))
+                    })
                     
                     // Add an ImageBasedLight for the immersive content
-                    guard let resource = try? await EnvironmentResource(named: "ImageBasedLight") else { return }
-                    let iblComponent = ImageBasedLightComponent(source: .single(resource), intensityExponent: 0.25)
-                    immersiveScene.components.set(iblComponent)
-                    immersiveScene.components.set(ImageBasedLightReceiverComponent(imageBasedLight: immersiveScene))
+                    if let resource = try? await EnvironmentResource(named: "ImageBasedLight") {
+                        let iblComponent = ImageBasedLightComponent(source: .single(resource), intensityExponent: 0.25)
+                        immersiveScene.components.set(iblComponent)
+                        immersiveScene.components.set(ImageBasedLightReceiverComponent(imageBasedLight: immersiveScene))
+                    }
                     
-                    /* Occluded floor */
+                    // Add occluded floor
                     let floor = ModelEntity(
                         mesh: .generatePlane(width: 100, depth: 100),
-                        materials: [
-                            OcclusionMaterial()
-                        ]
+                        materials: [OcclusionMaterial()]
                     )
                     floor.generateCollisionShapes(recursive: false)
-                    floor.components[PhysicsBodyComponent.self] = .init(
-                      PhysicsBodyComponent(
+                    floor.components[PhysicsBodyComponent.self] = PhysicsBodyComponent(
                         massProperties: .default,
-                        material: .generate(
-                          staticFriction: 0.8,
-                          dynamicFriction: 0.0,
-                          restitution: 0.0
-                        ),
+                        material: .generate(staticFriction: 0.8, dynamicFriction: 0.0, restitution: 0.0),
                         mode: .kinematic
-                      )
                     )
                     content.add(floor)
                     
@@ -62,9 +55,10 @@ struct ImmersiveView: View {
                         content.add(showCaseFloor)
                     }
                     
+                    // Add point of interest components to entities
                     appModel.collectionItems.forEach { item in
                         if let entity = immersiveScene.findEntity(named: item.modelName) {
-                            entity.components[PointOfInterestComponent.self] = .init(
+                            entity.components[PointOfInterestComponent.self] = PointOfInterestComponent(
                                 name: item.title,
                                 description: item.description
                             )
@@ -72,19 +66,12 @@ struct ImmersiveView: View {
                     }
                 }
             } update: { content, attachments in
-                // Add attachment entities to marked entities. First, find all entities that have the
-                // PointOfInterestRuntimeComponent, which means they've created an attachment.
+                // Update attachment entities for marked entities
                 content.entities.first?.scene?.performQuery(Self.runtimeQuery).forEach { entity in
-
-                    guard let component = entity.components[PointOfInterestRuntimeComponent.self] else { return }
-
-                    // Get the entity from the collection of attachments keyed by tag.
-                    guard let attachmentEntity = attachments.entity(for: component.attachmentTag) else { return }
-
-                    guard attachmentEntity.parent == nil else { return }
-
-                    // SwiftUI calculates an attachment view's expanded size using the top center as the pivot point. This
-                    // raises the views so they aren't sunk into the terrain in their initial collapsed state.
+                    guard let component = entity.components[PointOfInterestRuntimeComponent.self],
+                          let attachmentEntity = attachments.entity(for: component.attachmentTag),
+                          attachmentEntity.parent == nil else { return }
+                    
                     entity.addChild(attachmentEntity)
                     attachmentEntity.setPosition([0.0, 0.6, 0.0], relativeTo: entity)
                 }
@@ -114,40 +101,29 @@ struct ImmersiveView: View {
         }
     }
     
+    /// Creates a "Learn More" view for a given entity.
     private func createLearnMoreView(for entity: Entity) {
-        
-        // If this entity already has a RuntimeComponent, don't add another one.
-        guard entity.components[PointOfInterestRuntimeComponent.self] == nil else { return }
-        
-        // Get this entity's PointOfInterestComponent, which is in the Reality Composer Pro project.
-        guard let pointOfInterest = entity.components[PointOfInterestComponent.self] else { return }
+        guard entity.components[PointOfInterestRuntimeComponent.self] == nil,
+              let pointOfInterest = entity.components[PointOfInterestComponent.self] else { return }
         
         let tag: ObjectIdentifier = entity.id
-        
         let name = LocalizedStringResource(stringLiteral: pointOfInterest.name)
         let description = LocalizedStringResource(stringLiteral: pointOfInterest.description ?? "")
         
-        let view = LearnMoreView(name: String(localized: name),
-                                 description: String(localized: description))
-            .tag(tag)
+        let view = LearnMoreView(name: String(localized: name), description: String(localized: description)).tag(tag)
         
         entity.components[PointOfInterestRuntimeComponent.self] = PointOfInterestRuntimeComponent(attachmentTag: tag)
-        
         attachmentsProvider.attachments[tag] = AnyView(view)
     }
     
+    /// Creates a floor entity for the showcase.
     private func createFloor(for y: Float, isDebug: Bool = false) -> ModelEntity {
         let showCaseFloor = ModelEntity(
             mesh: .generatePlane(width: 0.95, depth: 0.35),
-            materials: [
-                SimpleMaterial(color: .random, isMetallic: true)
-            ]
+            materials: [SimpleMaterial(color: .random, isMetallic: true)]
         )
         showCaseFloor.generateCollisionShapes(recursive: false)
-        showCaseFloor.components[PhysicsBodyComponent.self] = .init(
-            massProperties: .default,
-            mode: .static
-        )
+        showCaseFloor.components[PhysicsBodyComponent.self] = PhysicsBodyComponent(massProperties: .default, mode: .static)
         showCaseFloor.position.y = y
         showCaseFloor.position.z = -1.85
         return showCaseFloor
