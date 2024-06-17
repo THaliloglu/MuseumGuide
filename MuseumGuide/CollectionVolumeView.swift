@@ -9,13 +9,14 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
+/// A view that displays a 3D model of the selected collection item.
 struct CollectionVolumeView: View {
     @Environment(AppModel.self) private var appModel
     
     let item: CollectionItem
     
-    @State var axRotateClockwise: Bool = false
-    @State var axRotateCounterClockwise: Bool = false
+    @State private var axRotateClockwise: Bool = false
+    @State private var axRotateCounterClockwise: Bool = false
     
     var body: some View {
         ZStack {
@@ -29,12 +30,13 @@ struct CollectionVolumeView: View {
             .dragRotation(
                 pitchLimit: .degrees(170),
                 axRotateClockwise: axRotateClockwise,
-                axRotateCounterClockwise: axRotateCounterClockwise)
+                axRotateCounterClockwise: axRotateCounterClockwise
+            )
         }
         .onAppear {
             appModel.currentItem = item
         }
-        .onDisappear{
+        .onDisappear {
             appModel.isShowingVolume = false
             appModel.currentItem = nil
         }
@@ -42,7 +44,11 @@ struct CollectionVolumeView: View {
 }
 
 #Preview {
-    let item = CollectionItem(title: "Aphrodite of Milos", description: "Detailed information about Aphrodite of Milos.", modelName: "aphrodite")
+    let item = CollectionItem(
+        title: "Aphrodite of Milos",
+        description: "Detailed information about Aphrodite of Milos.",
+        modelName: "aphrodite"
+    )
     return CollectionVolumeView(item: item)
         .environment(AppModel())
 }
