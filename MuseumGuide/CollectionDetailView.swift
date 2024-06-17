@@ -11,47 +11,44 @@ import RealityKitContent
 
 private let modelDepth: Double = 200
 
+/// A view that displays detailed information about a specific collection item.
 struct CollectionDetailView: View {
     @Environment(AppModel.self) private var appModel
     
     let item: CollectionItem
     
     var body: some View {
-        
         GeometryReader { proxy in
             let textWidth = min(max(proxy.size.width * 0.4, 300), 500)
             let imageWidth = min(max(proxy.size.width - textWidth, 200), 500)
-            ZStack {
-                HStack(spacing: 60) {
-                    VStack(alignment: .leading, spacing: 0) {
-                        Text(item.title)
-                            .font(.system(size: 50, weight: .bold))
-                            .padding(.bottom, 15)
-                            .accessibilitySortPriority(4)
-
-                        Text(item.description)
-                            .padding(.bottom, 30)
-                            .accessibilitySortPriority(3)
-                        
-                        VolumeToggle(item: item)
-                    }
-                    .frame(width: textWidth, alignment: .leading)
-
-                    ModelView(item: item)
-                        .frame(width: imageWidth, alignment: .center)
-                        .scaleEffect(0.8)
-                }
-//                .onAppear {
-//                    appModel.currentItem = item
-//                }
-//                .onDisappear {
-//                    appModel.currentItem = nil
-//                }
-                .offset(y: -30)
+            
+            HStack(spacing: 60) {
+                itemDetails(textWidth: textWidth)
+                ModelView(item: item)
+                    .frame(width: imageWidth, alignment: .center)
+                    .scaleEffect(0.8)
             }
+            .offset(y: -30)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(70)
         }
-        .padding(70)
+    }
+    
+    /// A view displaying the title and description of the collection item.
+    private func itemDetails(textWidth: CGFloat) -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text(item.title)
+                .font(.system(size: 50, weight: .bold))
+                .padding(.bottom, 15)
+                .accessibilitySortPriority(4)
+            
+            Text(item.description)
+                .padding(.bottom, 30)
+                .accessibilitySortPriority(3)
+            
+            VolumeToggle(item: item)
+        }
+        .frame(width: textWidth, alignment: .leading)
     }
 }
 
@@ -79,8 +76,9 @@ struct VolumeToggle: View {
     }
 }
 
+/// A view for displaying a 3D model of the collection item.
 struct ModelView: View {
-    var item: CollectionItem
+    let item: CollectionItem
     var orientation: SIMD3<Double> = .zero
 
     var body: some View {
@@ -88,9 +86,7 @@ struct ModelView: View {
             model.resizable()
                 .scaledToFit()
                 .rotation3DEffect(
-                    Rotation3D(
-                        eulerAngles: .init(angles: orientation, order: .xyz)
-                    )
+                    Rotation3D(eulerAngles: .init(angles: orientation, order: .xyz))
                 )
                 .frame(depth: modelDepth)
                 .offset(z: -modelDepth / 2)
@@ -102,9 +98,12 @@ struct ModelView: View {
     }
 }
 
-
 #Preview {
-    let item = CollectionItem(title: "Aphrodite of Milos", description: "Detailed information about Aphrodite of Milos.", modelName: "aphrodite")
+    let item = CollectionItem(
+        title: "Aphrodite of Milos",
+        description: "Detailed information about Aphrodite of Milos.",
+        modelName: "aphrodite"
+    )
     return CollectionDetailView(item: item)
         .environment(AppModel())
 }
