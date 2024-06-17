@@ -16,6 +16,8 @@ struct CollectionsToggle: View {
                 .padding()
                 .foregroundStyle(.secondary)
                 .cornerRadius(10)
+                .accessibilityLabel("View Collections")
+                .accessibilityHint("Navigates to the collections view where you can explore different museum collections.")
         }
         .glassBackgroundEffect()
         .buttonStyle(.borderless)

@@ -27,8 +27,12 @@ struct ImmersiveToggle: View {
                 Label(
                     "Exit Immersive Space",
                     systemImage: "arrow.down.right.and.arrow.up.left")
+                    .accessibilityLabel("Exit Immersive Space")
+                    .accessibilityHint("Tap to exit the immersive space.")
             } else {
                 Text("Show Immersive Space")
+                    .accessibilityLabel("Show Immersive Space")
+                    .accessibilityHint("Tap to enter the immersive space.")
             }
         }
         .glassBackgroundEffect()

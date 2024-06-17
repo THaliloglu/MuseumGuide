@@ -27,10 +27,16 @@ struct CollectionDetailView: View {
                 ModelView(item: item)
                     .frame(width: imageWidth, alignment: .center)
                     .scaleEffect(0.8)
+                    .accessibilityElement(children: .combine)
+                    .accessibilityLabel("3D model of \(item.title)")
+                    .accessibilityHint("Use swipe gestures to explore the 3D model.")
             }
             .offset(y: -30)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(70)
+            .accessibilityElement(children: .contain)
+            .accessibilityLabel("Detail view of \(item.title)")
+            .accessibilityHint("Displays detailed information and a 3D model of the selected collection item.")
         }
     }
     
@@ -40,13 +46,20 @@ struct CollectionDetailView: View {
             Text(item.title)
                 .font(.system(size: 50, weight: .bold))
                 .padding(.bottom, 15)
+                .accessibilityLabel(item.title)
+                .accessibilityHint("Title of the collection item.")
                 .accessibilitySortPriority(4)
             
             Text(item.description)
                 .padding(.bottom, 30)
+                .accessibilityLabel(item.description)
+                .accessibilityHint("Description of the collection item.")
                 .accessibilitySortPriority(3)
             
             VolumeToggle(item: item)
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel("See More")
+                .accessibilityHint("Toggle to view more details about the collection item.")
         }
         .frame(width: textWidth, alignment: .leading)
     }
@@ -73,6 +86,8 @@ struct VolumeToggle: View {
                 }
             }
             .toggleStyle(.button)
+            .accessibilityLabel("See More Toggle")
+            .accessibilityHint("Toggle to see more information about \(item.title).")
     }
 }
 
@@ -90,10 +105,11 @@ struct ModelView: View {
                 )
                 .frame(depth: modelDepth)
                 .offset(z: -modelDepth / 2)
-                .accessibilitySortPriority(1)
         } placeholder: {
             ProgressView()
                 .offset(z: -modelDepth * 0.75)
+                .accessibilityLabel("Loading 3D model")
+                .accessibilityHint("The 3D model is currently loading.")
         }
     }
 }

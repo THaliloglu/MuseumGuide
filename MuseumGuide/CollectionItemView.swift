@@ -18,12 +18,16 @@ struct CollectionItemView: View {
                 .font(.headline)
                 .multilineTextAlignment(.center)
                 .padding()
+                .accessibilityLabel(item.title)
+                .accessibilityHint("Title of the collection item.")
             
             // Display the description of the collection item
             Text(item.description)
                 .font(.body)
                 .multilineTextAlignment(.leading)
                 .padding([.leading, .trailing, .bottom])
+                .accessibilityLabel(item.description)
+                .accessibilityHint("Description of the collection item.")
         }
     }
 }

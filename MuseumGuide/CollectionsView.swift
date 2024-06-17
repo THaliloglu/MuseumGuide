@@ -27,6 +27,9 @@ struct CollectionsView: View {
                                     .frame(width: itemWidth, height: itemHeight)
                                     .background(Color.gray.opacity(0.2))
                                     .cornerRadius(8)
+                                    .accessibilityElement(children: .combine)
+                                    .accessibilityLabel(item.title)
+                                    .accessibilityHint("Double tap to view details about \(item.title).")
                             }
                             .buttonBorderShape(.roundedRectangle)
                             .buttonStyle(.plain)
@@ -35,6 +38,8 @@ struct CollectionsView: View {
                     .padding()
                 }
                 .navigationTitle("Collections")
+                .accessibilityLabel("Collections View")
+                .accessibilityHint("Displays a grid of collection items available in the museum.")
             }
         }
     }

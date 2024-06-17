@@ -18,6 +18,7 @@ struct ImmersiveView: View {
     
     @State private var subscriptions = [EventSubscription]()
     @State private var attachmentsProvider = AttachmentsProvider()
+    @State private var accessibilityInfo = [ObjectIdentifier: (name: String, description: String)]()
     
     var body: some View {
         ZStack {
@@ -77,8 +78,12 @@ struct ImmersiveView: View {
                 }
             } attachments: {
                 ForEach(attachmentsProvider.sortedTagViewPairs, id: \.tag) { pair in
+                    let info = accessibilityInfo[pair.tag]
                     Attachment(id: pair.tag) {
                         pair.view
+                            .accessibilityElement(children: .combine)
+                            .accessibilityLabel(info?.name ?? "")
+                            .accessibilityHint(info?.description ?? "")
                     }
                 }
             }
@@ -95,10 +100,14 @@ struct ImmersiveView: View {
         }
         .onAppear {
             appModel.isShowingImmersive = true
+            UIAccessibility.post(notification: .announcement, argument: "Entering immersive view. Swipe to explore.")
         }
         .onDisappear {
             appModel.isShowingImmersive = false
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("Immersive View")
+        .accessibilityHint("Displays an immersive 3D environment with points of interest.")
     }
     
     /// Creates a "Learn More" view for a given entity.
@@ -107,13 +116,14 @@ struct ImmersiveView: View {
               let pointOfInterest = entity.components[PointOfInterestComponent.self] else { return }
         
         let tag: ObjectIdentifier = entity.id
-        let name = LocalizedStringResource(stringLiteral: pointOfInterest.name)
-        let description = LocalizedStringResource(stringLiteral: pointOfInterest.description ?? "")
+        let name = pointOfInterest.name
+        let description = pointOfInterest.description ?? ""
         
-        let view = LearnMoreView(name: String(localized: name), description: String(localized: description)).tag(tag)
+        let view = LearnMoreView(name: name, description: description).tag(tag)
         
         entity.components[PointOfInterestRuntimeComponent.self] = PointOfInterestRuntimeComponent(attachmentTag: tag)
         attachmentsProvider.attachments[tag] = AnyView(view)
+        accessibilityInfo[tag] = (name: name, description: description)
     }
     
     /// Creates a floor entity for the showcase.

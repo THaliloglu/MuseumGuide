@@ -17,6 +17,9 @@ struct MuseumGuideApp: App {
         WindowGroup("Welcome View", id: "welcomeView") {
             WelcomeView()
                 .environment(appModel)
+                .accessibilityElement(children: .contain)
+                .accessibilityLabel("Welcome View")
+                .accessibilityHint("This is the welcome screen of the Museum Guide app.")
         }
         .windowStyle(.plain)
         
@@ -24,8 +27,13 @@ struct MuseumGuideApp: App {
             if let item = collectionItem {
                 CollectionVolumeView(item: item)
                     .environment(appModel)
+                    .accessibilityElement(children: .contain)
+                    .accessibilityLabel("Collection Volume View")
+                    .accessibilityHint("Displays detailed information about the selected collection item.")
             } else {
                 Text("No item selected")
+                    .accessibilityLabel("No item selected")
+                    .accessibilityHint("No item has been selected from the collection.")
             }
         }
         .windowStyle(.volumetric)
@@ -34,6 +42,9 @@ struct MuseumGuideApp: App {
         ImmersiveSpace(id: "ImmersiveSpace") {
             ImmersiveView()
                 .environment(appModel)
+                .accessibilityElement(children: .contain)
+                .accessibilityLabel("Immersive View")
+                .accessibilityHint("Provides an immersive experience of the museum.")
         }.immersionStyle(selection: .constant(.mixed), in: .mixed)
     }
     

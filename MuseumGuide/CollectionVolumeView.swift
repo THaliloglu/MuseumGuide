@@ -24,8 +24,13 @@ struct CollectionVolumeView: View {
                 model
                     .resizable()
                     .scaledToFit()
+                    .accessibilityElement(children: .combine)
+                    .accessibilityLabel("3D model of \(item.title)")
+                    .accessibilityHint("Swipe to rotate and explore the model.")
             } placeholder: {
                 ProgressView()
+                    .accessibilityLabel("Loading 3D model")
+                    .accessibilityHint("The 3D model is currently loading.")
             }
             .dragRotation(
                 pitchLimit: .degrees(170),
@@ -35,11 +40,15 @@ struct CollectionVolumeView: View {
         }
         .onAppear {
             appModel.currentItem = item
+            UIAccessibility.post(notification: .announcement, argument: "Displaying 3D model of \(item.title). Swipe to rotate and explore.")
         }
         .onDisappear {
             appModel.isShowingVolume = false
             appModel.currentItem = nil
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("3D Model View")
+        .accessibilityHint("Displays a 3D model of the selected collection item.")
     }
 }
 

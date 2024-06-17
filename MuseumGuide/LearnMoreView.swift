@@ -35,6 +35,9 @@ public struct LearnMoreView: View {
                         .matchedGeometryEffect(id: "Name", in: animation)
                         .font(titleFont)
                         .padding()
+                        .accessibilityElement(children: .combine)
+                        .accessibilityLabel(name)
+                        .accessibilityHint("Tap to see more information.")
                 }
                 
                 if showingMoreInfo {
@@ -42,9 +45,12 @@ public struct LearnMoreView: View {
                         Text(name)
                             .matchedGeometryEffect(id: "Name", in: animation)
                             .font(titleFont)
+                            .accessibilityAddTraits(.isHeader)
                         
                         Text(description)
                             .font(descriptionFont)
+                            .accessibilityLabel(description)
+                            .accessibilityHint("Description of \(name).")
                     }
                     .transition(.opacity)
                 }
@@ -56,6 +62,7 @@ public struct LearnMoreView: View {
             .onTapGesture {
                 withAnimation(.spring) {
                     showingMoreInfo.toggle()
+                    UIAccessibility.post(notification: .announcement, argument: showingMoreInfo ? "Showing more information about \(name)." : "Hiding information about \(name).")
                 }
             }
         }
