@@ -1,0 +1,1310 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 1.0 (409.100.15)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["cabinet2_100x175", "vasoFiori", "aphrodite", "clock", "crown", "sculptureCentaur", "sculptureSt", "counter", "wolfSkull"]
+    def "cabinet2_100x175" (
+        active = true
+        references = @cabinet2-100x175.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (0, 0, -2)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "RigidBody"
+        {
+            uniform token info:id = "RealityKit.RigidBody"
+
+            def RealityKitStruct "massFrame"
+            {
+                float m_mass = 50
+
+                def RealityKitStruct "m_pose"
+                {
+                    float3 position = (0, 0.8, 0)
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            bool enabled = 0
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider" (
+            active = false
+        )
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (99.436424, 171.30328, 36.100574)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0.01820755, 85.581406, 18.050287)
+                }
+            }
+        }
+    }
+
+    def Cube "vasoFiori" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        reorder nameChildren = ["BrownLeather", "DefaultMaterial", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
+        rel material:binding = </Root/vasoFiori/BrownLeather> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-0.23198922, 0.26810497, -1.8216996)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+
+        def RealityKitComponent "RigidBody"
+        {
+            uniform token info:id = "RealityKit.RigidBody"
+
+            def RealityKitStruct "massFrame"
+            {
+                def RealityKitStruct "m_pose"
+                {
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
+                double dynamicFriction = 50
+                double staticFriction = 10
+            }
+        }
+
+        def RealityKitComponent "MotionState"
+        {
+            uniform token info:id = "RealityKit.MotionState"
+        }
+
+        def RealityKitCustomComponent "RealityKitContent_PointOfInterestComponent"
+        {
+            string description = "This is cube"
+            uniform token info:id = "RealityKitContent.PointOfInterestComponent"
+            string name = "Cube"
+        }
+
+        def "BrownLeather" (
+            active = true
+            prepend references = @textures/BrownLeather.usdz@
+        )
+        {
+            color3f inputs:Basecolor_Tint (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-45.51249, 49.172512)
+                        float2 sizeInSubgraph = (160.5, 53)
+                        int stackingOrderInSubgraph = 2268
+                    }
+                }
+            )
+            float2 inputs:UV_Scale (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-695.3267, 352.1356)
+                        float2 sizeInSubgraph = (138.5, 53)
+                        int stackingOrderInSubgraph = 2240
+                    }
+                }
+            )
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "Mix"
+            {
+                float2 ui:nodegraph:node:size = (109, 145)
+            }
+
+            over "Swizzle_1"
+            {
+                float2 ui:nodegraph:node:size = (145.5, 53)
+            }
+
+            over "Swizzle"
+            {
+                float2 ui:nodegraph:node:size = (133.5, 40)
+            }
+
+            over "Multiply_1"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "Dot"
+            {
+                float2 ui:nodegraph:node:size = (44, 18)
+            }
+
+            over "multiply"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "add"
+            {
+                float2 ui:nodegraph:node:size = (61.5, 36.5)
+            }
+
+            over "PreviewSurface"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+            }
+
+            over "BaseColor"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Roughness"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Metallic"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Normal"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+        }
+    }
+
+    def Cube "aphrodite" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        reorder nameChildren = ["DarkBlueDenimFabric", "DefaultMaterial", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
+        rel material:binding = </Root/aphrodite/DarkBlueDenimFabric> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.23585239, 0.26810497, -1.8216996)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+
+        def RealityKitComponent "RigidBody"
+        {
+            uniform token info:id = "RealityKit.RigidBody"
+
+            def RealityKitStruct "massFrame"
+            {
+                def RealityKitStruct "m_pose"
+                {
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
+                double dynamicFriction = 50
+                double staticFriction = 10
+            }
+        }
+
+        def RealityKitComponent "MotionState"
+        {
+            uniform token info:id = "RealityKit.MotionState"
+        }
+
+        def RealityKitCustomComponent "RealityKitContent_PointOfInterestComponent"
+        {
+            string description = "This is cube"
+            uniform token info:id = "RealityKitContent.PointOfInterestComponent"
+            string name = "Cube"
+        }
+
+        def "DarkBlueDenimFabric" (
+            active = true
+            prepend references = @textures/DarkBlueDenimFabric.usdz@
+        )
+        {
+            color3f inputs:Basecolor_Tint (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-56.812614, 67.17455)
+                        float2 sizeInSubgraph = (160.5, 53)
+                        int stackingOrderInSubgraph = 2328
+                    }
+                }
+            )
+            float2 inputs:UV_Scale (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-725.2588, 351.55255)
+                        float2 sizeInSubgraph = (138.5, 53)
+                        int stackingOrderInSubgraph = 2272
+                    }
+                }
+            )
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "Dot"
+            {
+                float2 ui:nodegraph:node:size = (44, 18)
+            }
+
+            over "multiply"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "add"
+            {
+                float2 ui:nodegraph:node:size = (61.5, 36.5)
+            }
+
+            over "PreviewSurface"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+            }
+
+            over "Mix"
+            {
+                float2 ui:nodegraph:node:size = (109, 145)
+            }
+
+            over "Swizzle"
+            {
+                float2 ui:nodegraph:node:size = (133.5, 40)
+            }
+
+            over "Swizzle_1"
+            {
+                float2 ui:nodegraph:node:size = (145.5, 53)
+            }
+
+            over "Multiply_1"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "BaseColor"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Roughness"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Metallic"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Normal"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+        }
+    }
+
+    def Cube "clock" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        reorder nameChildren = ["GreenNapaLeather", "DefaultMaterial", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
+        rel material:binding = </Root/clock/GreenNapaLeather> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.23585239, 0.6630113, -1.8216996)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+
+        def RealityKitComponent "RigidBody"
+        {
+            uniform token info:id = "RealityKit.RigidBody"
+
+            def RealityKitStruct "massFrame"
+            {
+                def RealityKitStruct "m_pose"
+                {
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
+                double dynamicFriction = 50
+                double staticFriction = 10
+            }
+        }
+
+        def RealityKitComponent "MotionState"
+        {
+            uniform token info:id = "RealityKit.MotionState"
+        }
+
+        def RealityKitCustomComponent "RealityKitContent_PointOfInterestComponent"
+        {
+            string description = "This is cube"
+            uniform token info:id = "RealityKitContent.PointOfInterestComponent"
+            string name = "Cube"
+        }
+
+        def "GreenNapaLeather" (
+            active = true
+            prepend references = @textures/GreenNapaLeather.usdz@
+        )
+        {
+            color3f inputs:Basecolor_Tint (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-56.812614, 67.17455)
+                        float2 sizeInSubgraph = (160.5, 53)
+                        int stackingOrderInSubgraph = 2338
+                    }
+                }
+            )
+            float2 inputs:UV_Scale (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-725.2588, 351.55255)
+                        float2 sizeInSubgraph = (138.5, 53)
+                        int stackingOrderInSubgraph = 2272
+                    }
+                }
+            )
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "Dot"
+            {
+                float2 ui:nodegraph:node:size = (44, 18)
+            }
+
+            over "multiply"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "add"
+            {
+                float2 ui:nodegraph:node:size = (61.5, 36.5)
+            }
+
+            over "PreviewSurface"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+            }
+
+            over "Mix"
+            {
+                float2 ui:nodegraph:node:size = (109, 145)
+            }
+
+            over "Swizzle"
+            {
+                float2 ui:nodegraph:node:size = (133.5, 40)
+            }
+
+            over "Swizzle_1"
+            {
+                float2 ui:nodegraph:node:size = (145.5, 53)
+            }
+
+            over "Multiply_1"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "BaseColor"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Roughness"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Metallic"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Normal"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+        }
+    }
+
+    def Cube "crown" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        reorder nameChildren = ["HickoryNapaLeather", "DefaultMaterial", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
+        rel material:binding = </Root/crown/HickoryNapaLeather> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-0.23234862, 0.6630113, -1.8216996)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+
+        def RealityKitComponent "RigidBody"
+        {
+            uniform token info:id = "RealityKit.RigidBody"
+
+            def RealityKitStruct "massFrame"
+            {
+                def RealityKitStruct "m_pose"
+                {
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
+                double dynamicFriction = 50
+                double staticFriction = 10
+            }
+        }
+
+        def RealityKitComponent "MotionState"
+        {
+            uniform token info:id = "RealityKit.MotionState"
+        }
+
+        def RealityKitCustomComponent "RealityKitContent_PointOfInterestComponent"
+        {
+            string description = "This is cube"
+            uniform token info:id = "RealityKitContent.PointOfInterestComponent"
+            string name = "Cube"
+        }
+
+        def "HickoryNapaLeather" (
+            active = true
+            prepend references = @textures/HickoryNapaLeather.usdz@
+        )
+        {
+            color3f inputs:Basecolor_Tint (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-56.812614, 67.17455)
+                        float2 sizeInSubgraph = (160.5, 53)
+                        int stackingOrderInSubgraph = 2342
+                    }
+                }
+            )
+            float2 inputs:UV_Scale (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-725.2588, 351.55255)
+                        float2 sizeInSubgraph = (138.5, 53)
+                        int stackingOrderInSubgraph = 2272
+                    }
+                }
+            )
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "Dot"
+            {
+                float2 ui:nodegraph:node:size = (44, 18)
+            }
+
+            over "multiply"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "add"
+            {
+                float2 ui:nodegraph:node:size = (61.5, 36.5)
+            }
+
+            over "PreviewSurface"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+            }
+
+            over "Mix"
+            {
+                float2 ui:nodegraph:node:size = (109, 145)
+            }
+
+            over "Swizzle"
+            {
+                float2 ui:nodegraph:node:size = (133.5, 40)
+            }
+
+            over "Swizzle_1"
+            {
+                float2 ui:nodegraph:node:size = (145.5, 53)
+            }
+
+            over "Multiply_1"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "BaseColor"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Roughness"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Metallic"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Normal"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+        }
+    }
+
+    def Cube "sculptureCentaur" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        reorder nameChildren = ["MetallicGoldPULeather", "DefaultMaterial", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
+        rel material:binding = </Root/sculptureCentaur/MetallicGoldPULeather> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-0.23234862, 1.057095, -1.8216996)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+
+        def RealityKitComponent "RigidBody"
+        {
+            uniform token info:id = "RealityKit.RigidBody"
+
+            def RealityKitStruct "massFrame"
+            {
+                def RealityKitStruct "m_pose"
+                {
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
+                double dynamicFriction = 50
+                double staticFriction = 10
+            }
+        }
+
+        def RealityKitComponent "MotionState"
+        {
+            uniform token info:id = "RealityKit.MotionState"
+        }
+
+        def RealityKitCustomComponent "RealityKitContent_PointOfInterestComponent"
+        {
+            string description = "This is cube"
+            uniform token info:id = "RealityKitContent.PointOfInterestComponent"
+            string name = "Cube"
+        }
+
+        def "MetallicGoldPULeather" (
+            active = true
+            prepend references = @textures/MetallicGoldPULeather.usdz@
+        )
+        {
+            color3f inputs:Basecolor_Tint (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-56.812614, 67.17455)
+                        float2 sizeInSubgraph = (160.5, 53)
+                        int stackingOrderInSubgraph = 2333
+                    }
+                }
+            )
+            float2 inputs:UV_Scale (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-725.2588, 351.55255)
+                        float2 sizeInSubgraph = (138.5, 53)
+                        int stackingOrderInSubgraph = 2272
+                    }
+                }
+            )
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "Dot"
+            {
+                float2 ui:nodegraph:node:size = (44, 18)
+            }
+
+            over "multiply"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "add"
+            {
+                float2 ui:nodegraph:node:size = (61.5, 36.5)
+            }
+
+            over "PreviewSurface"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+            }
+
+            over "Mix"
+            {
+                float2 ui:nodegraph:node:size = (109, 145)
+            }
+
+            over "Swizzle"
+            {
+                float2 ui:nodegraph:node:size = (133.5, 40)
+            }
+
+            over "Swizzle_1"
+            {
+                float2 ui:nodegraph:node:size = (145.5, 53)
+            }
+
+            over "Multiply_1"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "BaseColor"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Roughness"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Metallic"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Normal"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+        }
+    }
+
+    def Cube "sculptureSt" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        reorder nameChildren = ["RedPULeather", "DefaultMaterial", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
+        rel material:binding = </Root/sculptureSt/RedPULeather> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.23072864, 1.057095, -1.8216996)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+
+        def RealityKitComponent "RigidBody"
+        {
+            uniform token info:id = "RealityKit.RigidBody"
+
+            def RealityKitStruct "massFrame"
+            {
+                def RealityKitStruct "m_pose"
+                {
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
+                double dynamicFriction = 50
+                double staticFriction = 10
+            }
+        }
+
+        def RealityKitComponent "MotionState"
+        {
+            uniform token info:id = "RealityKit.MotionState"
+        }
+
+        def RealityKitCustomComponent "RealityKitContent_PointOfInterestComponent"
+        {
+            string description = "This is cube"
+            uniform token info:id = "RealityKitContent.PointOfInterestComponent"
+            string name = "Cube"
+        }
+
+        def "RedPULeather" (
+            active = true
+            prepend references = @textures/RedPULeather.usdz@
+        )
+        {
+            color3f inputs:Basecolor_Tint (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-56.812614, 67.17455)
+                        float2 sizeInSubgraph = (160.5, 53)
+                        int stackingOrderInSubgraph = 2336
+                    }
+                }
+            )
+            float2 inputs:UV_Scale (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-725.2588, 351.55255)
+                        float2 sizeInSubgraph = (138.5, 53)
+                        int stackingOrderInSubgraph = 2272
+                    }
+                }
+            )
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "Dot"
+            {
+                float2 ui:nodegraph:node:size = (44, 18)
+            }
+
+            over "multiply"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "add"
+            {
+                float2 ui:nodegraph:node:size = (61.5, 36.5)
+            }
+
+            over "PreviewSurface"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+            }
+
+            over "Mix"
+            {
+                float2 ui:nodegraph:node:size = (109, 145)
+            }
+
+            over "Swizzle"
+            {
+                float2 ui:nodegraph:node:size = (133.5, 40)
+            }
+
+            over "Swizzle_1"
+            {
+                float2 ui:nodegraph:node:size = (145.5, 53)
+            }
+
+            over "Multiply_1"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "BaseColor"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Roughness"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Metallic"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Normal"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+        }
+    }
+
+    def Cube "counter" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        reorder nameChildren = ["SmoothBlackPULeather", "DefaultMaterial", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
+        rel material:binding = </Root/counter/SmoothBlackPULeather> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.23072864, 1.4708561, -1.8216996)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+
+        def RealityKitComponent "RigidBody"
+        {
+            uniform token info:id = "RealityKit.RigidBody"
+
+            def RealityKitStruct "massFrame"
+            {
+                def RealityKitStruct "m_pose"
+                {
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
+                double dynamicFriction = 50
+                double staticFriction = 10
+            }
+        }
+
+        def RealityKitComponent "MotionState"
+        {
+            uniform token info:id = "RealityKit.MotionState"
+        }
+
+        def RealityKitCustomComponent "RealityKitContent_PointOfInterestComponent"
+        {
+            string description = "This is cube"
+            uniform token info:id = "RealityKitContent.PointOfInterestComponent"
+            string name = "Cube"
+        }
+
+        def "SmoothBlackPULeather" (
+            active = true
+            prepend references = @textures/SmoothBlackPULeather.usdz@
+        )
+        {
+            color3f inputs:Basecolor_Tint (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-56.812614, 67.17455)
+                        float2 sizeInSubgraph = (160.5, 53)
+                        int stackingOrderInSubgraph = 2337
+                    }
+                }
+            )
+            float2 inputs:UV_Scale (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-725.2588, 351.55255)
+                        float2 sizeInSubgraph = (138.5, 53)
+                        int stackingOrderInSubgraph = 2272
+                    }
+                }
+            )
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "Dot"
+            {
+                float2 ui:nodegraph:node:size = (44, 18)
+            }
+
+            over "multiply"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "add"
+            {
+                float2 ui:nodegraph:node:size = (61.5, 36.5)
+            }
+
+            over "PreviewSurface"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+            }
+
+            over "Mix"
+            {
+                float2 ui:nodegraph:node:size = (109, 145)
+            }
+
+            over "Swizzle"
+            {
+                float2 ui:nodegraph:node:size = (133.5, 40)
+            }
+
+            over "Swizzle_1"
+            {
+                float2 ui:nodegraph:node:size = (145.5, 53)
+            }
+
+            over "Multiply_1"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "BaseColor"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Roughness"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Metallic"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Normal"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+        }
+    }
+
+    def Cube "wolfSkull" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        reorder nameChildren = ["SmoothConcrete", "DefaultMaterial", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
+        rel material:binding = </Root/wolfSkull/SmoothConcrete> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-0.23536062, 1.4708561, -1.8216996)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+
+        def RealityKitComponent "RigidBody"
+        {
+            uniform token info:id = "RealityKit.RigidBody"
+
+            def RealityKitStruct "massFrame"
+            {
+                def RealityKitStruct "m_pose"
+                {
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
+                double dynamicFriction = 50
+                double staticFriction = 10
+            }
+        }
+
+        def RealityKitComponent "MotionState"
+        {
+            uniform token info:id = "RealityKit.MotionState"
+        }
+
+        def RealityKitCustomComponent "RealityKitContent_PointOfInterestComponent"
+        {
+            string description = "This is cube"
+            uniform token info:id = "RealityKitContent.PointOfInterestComponent"
+            string name = "Cube"
+        }
+
+        def "SmoothConcrete" (
+            active = true
+            prepend references = @textures/SmoothConcrete.usdz@
+        )
+        {
+            color3f inputs:Basecolor_Tint (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-56.812614, 67.17455)
+                        float2 sizeInSubgraph = (160.5, 53)
+                        int stackingOrderInSubgraph = 2344
+                    }
+                }
+            )
+            float2 inputs:UV_Scale (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-725.2588, 351.55255)
+                        float2 sizeInSubgraph = (138.5, 53)
+                        int stackingOrderInSubgraph = 2272
+                    }
+                }
+            )
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "Dot"
+            {
+                float2 ui:nodegraph:node:size = (44, 18)
+            }
+
+            over "multiply"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "add"
+            {
+                float2 ui:nodegraph:node:size = (61.5, 36.5)
+            }
+
+            over "PreviewSurface"
+            {
+                float2 ui:nodegraph:node:size = (148.5, 199)
+            }
+
+            over "Mix"
+            {
+                float2 ui:nodegraph:node:size = (109, 145)
+            }
+
+            over "Swizzle"
+            {
+                float2 ui:nodegraph:node:size = (133.5, 40)
+            }
+
+            over "Swizzle_1"
+            {
+                float2 ui:nodegraph:node:size = (145.5, 53)
+            }
+
+            over "Multiply_1"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "BaseColor"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Roughness"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Metallic"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+
+            over "Normal"
+            {
+                float2 ui:nodegraph:node:size = (158.5, 235)
+            }
+        }
+    }
+}
+
