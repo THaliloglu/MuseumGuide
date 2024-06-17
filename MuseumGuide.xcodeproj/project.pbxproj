@@ -51,6 +51,7 @@
 		38E4A4C02C1E389600EC2A6E /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		38E4A4C22C1E3FCA00EC2A6E /* LearnMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnMoreView.swift; sourceTree = "<group>"; };
 		38E4A4C42C1F97F300EC2A6E /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		38E4A4CA2C1FF39700EC2A6E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		38EF40552C1125CC00527EC7 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		38EF40572C1128DA00527EC7 /* CollectionVolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVolumeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +72,7 @@
 		38124A2F2C09224100064FF6 = {
 			isa = PBXGroup;
 			children = (
+				38E4A4CA2C1FF39700EC2A6E /* README.md */,
 				38124A3A2C09224100064FF6 /* MuseumGuide */,
 				38124A3B2C09224100064FF6 /* Packages */,
 				38124A392C09224100064FF6 /* Products */,
