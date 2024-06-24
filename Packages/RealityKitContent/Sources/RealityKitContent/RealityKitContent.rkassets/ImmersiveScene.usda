@@ -72,11 +72,11 @@ def Xform "Root"
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
-        reorder nameChildren = ["BrownLeather", "DefaultMaterial", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
+        reorder nameChildren = ["vasoFiori", "BrownLeather", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
         rel material:binding = </Root/vasoFiori/BrownLeather> (
             bindMaterialAs = "weakerThanDescendants"
         )
-        double size = 0.2
+        double size = 0.01
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (-0.23198922, 0.26810497, -1.8216996)
@@ -220,6 +220,16 @@ def Xform "Root"
                 float2 ui:nodegraph:node:size = (158.5, 235)
             }
         }
+
+        def "vasoFiori" (
+            active = true
+            prepend references = @vasoFiori.usdz@
+        )
+        {
+            float3 xformOp:scale = (0.001, 0.001, 0.001)
+            float3 xformOp:translate = (0, 0.045618057, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
     }
 
     def Cube "aphrodite" (
@@ -227,11 +237,11 @@ def Xform "Root"
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
-        reorder nameChildren = ["DarkBlueDenimFabric", "DefaultMaterial", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
+        reorder nameChildren = ["aphrodite", "DarkBlueDenimFabric", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
         rel material:binding = </Root/aphrodite/DarkBlueDenimFabric> (
             bindMaterialAs = "weakerThanDescendants"
         )
-        double size = 0.2
+        double size = 0.01
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (0.23585239, 0.26810497, -1.8216996)
@@ -375,6 +385,16 @@ def Xform "Root"
                 float2 ui:nodegraph:node:size = (158.5, 235)
             }
         }
+
+        def "aphrodite" (
+            active = true
+            prepend references = @aphrodite.usdz@
+        )
+        {
+            float3 xformOp:scale = (0.001, 0.001, 0.001)
+            float3 xformOp:translate = (0, -0.023192361, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
     }
 
     def Cube "clock" (
@@ -382,11 +402,11 @@ def Xform "Root"
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
-        reorder nameChildren = ["GreenNapaLeather", "DefaultMaterial", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
+        reorder nameChildren = ["clock", "GreenNapaLeather", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
         rel material:binding = </Root/clock/GreenNapaLeather> (
             bindMaterialAs = "weakerThanDescendants"
         )
-        double size = 0.2
+        double size = 0.01
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (0.23585239, 0.6630113, -1.8216996)
@@ -530,6 +550,16 @@ def Xform "Root"
                 float2 ui:nodegraph:node:size = (158.5, 235)
             }
         }
+
+        def "clock" (
+            active = true
+            prepend references = @clock.usdz@
+        )
+        {
+            float3 xformOp:scale = (0.001, 0.001, 0.001)
+            float3 xformOp:translate = (0, 0.06235802, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
     }
 
     def Cube "crown" (
@@ -537,11 +567,11 @@ def Xform "Root"
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
-        reorder nameChildren = ["HickoryNapaLeather", "DefaultMaterial", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
+        reorder nameChildren = ["crown", "HickoryNapaLeather", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
         rel material:binding = </Root/crown/HickoryNapaLeather> (
             bindMaterialAs = "weakerThanDescendants"
         )
-        double size = 0.2
+        double size = 0.01
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (-0.23234862, 0.6630113, -1.8216996)
@@ -685,6 +715,16 @@ def Xform "Root"
                 float2 ui:nodegraph:node:size = (158.5, 235)
             }
         }
+
+        def "crown" (
+            active = true
+            prepend references = @crown.usdz@
+        )
+        {
+            float3 xformOp:scale = (0.001, 0.001, 0.001)
+            float3 xformOp:translate = (0, -0.07602453, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
     }
 
     def Cube "sculptureCentaur" (
@@ -692,11 +732,11 @@ def Xform "Root"
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
-        reorder nameChildren = ["MetallicGoldPULeather", "DefaultMaterial", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
+        reorder nameChildren = ["sculptureCentaur", "MetallicGoldPULeather", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
         rel material:binding = </Root/sculptureCentaur/MetallicGoldPULeather> (
             bindMaterialAs = "weakerThanDescendants"
         )
-        double size = 0.2
+        double size = 0.01
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (-0.23234862, 1.057095, -1.8216996)
@@ -840,6 +880,16 @@ def Xform "Root"
                 float2 ui:nodegraph:node:size = (158.5, 235)
             }
         }
+
+        def "sculptureCentaur" (
+            active = true
+            prepend references = @sculptureCentaur.usdz@
+        )
+        {
+            float3 xformOp:scale = (0.001, 0.001, 0.001)
+            float3 xformOp:translate = (0, 0.051838398, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
     }
 
     def Cube "sculptureSt" (
@@ -847,11 +897,11 @@ def Xform "Root"
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
-        reorder nameChildren = ["RedPULeather", "DefaultMaterial", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
+        reorder nameChildren = ["sculptureSt", "RedPULeather", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
         rel material:binding = </Root/sculptureSt/RedPULeather> (
             bindMaterialAs = "weakerThanDescendants"
         )
-        double size = 0.2
+        double size = 0.01
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (0.23072864, 1.057095, -1.8216996)
@@ -995,6 +1045,16 @@ def Xform "Root"
                 float2 ui:nodegraph:node:size = (158.5, 235)
             }
         }
+
+        def "sculptureSt" (
+            active = true
+            prepend references = @sculptureSt.usdz@
+        )
+        {
+            float3 xformOp:scale = (0.001, 0.001, 0.001)
+            float3 xformOp:translate = (0, 0.04887855, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
     }
 
     def Cube "counter" (
@@ -1002,11 +1062,11 @@ def Xform "Root"
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
-        reorder nameChildren = ["SmoothBlackPULeather", "DefaultMaterial", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
+        reorder nameChildren = ["counter", "SmoothBlackPULeather", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
         rel material:binding = </Root/counter/SmoothBlackPULeather> (
             bindMaterialAs = "weakerThanDescendants"
         )
-        double size = 0.2
+        double size = 0.01
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (0.23072864, 1.4708561, -1.8216996)
@@ -1074,7 +1134,7 @@ def Xform "Root"
                 customData = {
                     dictionary realitykit = {
                         float2 positionInSubgraph = (-56.812614, 67.17455)
-                        float2 sizeInSubgraph = (160.5, 53)
+                        float2 sizeInSubgraph = (161, 53)
                         int stackingOrderInSubgraph = 2337
                     }
                 }
@@ -1083,12 +1143,12 @@ def Xform "Root"
                 customData = {
                     dictionary realitykit = {
                         float2 positionInSubgraph = (-725.2588, 351.55255)
-                        float2 sizeInSubgraph = (138.5, 53)
+                        float2 sizeInSubgraph = (139, 53)
                         int stackingOrderInSubgraph = 2272
                     }
                 }
             )
-            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
 
             over "Dot"
             {
@@ -1097,17 +1157,17 @@ def Xform "Root"
 
             over "multiply"
             {
-                float2 ui:nodegraph:node:size = (60, 36)
+                float2 ui:nodegraph:node:size = (61, 36)
             }
 
             over "add"
             {
-                float2 ui:nodegraph:node:size = (61.5, 36.5)
+                float2 ui:nodegraph:node:size = (63, 37)
             }
 
             over "PreviewSurface"
             {
-                float2 ui:nodegraph:node:size = (148.5, 199)
+                float2 ui:nodegraph:node:size = (149, 199)
             }
 
             over "Mix"
@@ -1117,38 +1177,48 @@ def Xform "Root"
 
             over "Swizzle"
             {
-                float2 ui:nodegraph:node:size = (133.5, 40)
+                float2 ui:nodegraph:node:size = (133, 40)
             }
 
             over "Swizzle_1"
             {
-                float2 ui:nodegraph:node:size = (145.5, 53)
+                float2 ui:nodegraph:node:size = (145, 53)
             }
 
             over "Multiply_1"
             {
-                float2 ui:nodegraph:node:size = (60, 36)
+                float2 ui:nodegraph:node:size = (61, 36)
             }
 
             over "BaseColor"
             {
-                float2 ui:nodegraph:node:size = (158.5, 235)
+                float2 ui:nodegraph:node:size = (159, 235)
             }
 
             over "Roughness"
             {
-                float2 ui:nodegraph:node:size = (158.5, 235)
+                float2 ui:nodegraph:node:size = (159, 235)
             }
 
             over "Metallic"
             {
-                float2 ui:nodegraph:node:size = (158.5, 235)
+                float2 ui:nodegraph:node:size = (159, 235)
             }
 
             over "Normal"
             {
-                float2 ui:nodegraph:node:size = (158.5, 235)
+                float2 ui:nodegraph:node:size = (159, 235)
             }
+        }
+
+        def "counter" (
+            active = true
+            prepend references = @counter.usdz@
+        )
+        {
+            float3 xformOp:scale = (0.001, 0.001, 0.001)
+            float3 xformOp:translate = (0, 0.017636418, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
         }
     }
 
@@ -1157,11 +1227,11 @@ def Xform "Root"
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
-        reorder nameChildren = ["SmoothConcrete", "DefaultMaterial", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
+        reorder nameChildren = ["wolfSkull", "SmoothConcrete", "InputTarget", "Collider", "RigidBody", "MotionState", "RealityKitContent_PointOfInterestComponent"]
         rel material:binding = </Root/wolfSkull/SmoothConcrete> (
             bindMaterialAs = "weakerThanDescendants"
         )
-        double size = 0.2
+        double size = 0.01
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (-0.23536062, 1.4708561, -1.8216996)
@@ -1229,7 +1299,7 @@ def Xform "Root"
                 customData = {
                     dictionary realitykit = {
                         float2 positionInSubgraph = (-56.812614, 67.17455)
-                        float2 sizeInSubgraph = (160.5, 53)
+                        float2 sizeInSubgraph = (161, 53)
                         int stackingOrderInSubgraph = 2344
                     }
                 }
@@ -1238,12 +1308,12 @@ def Xform "Root"
                 customData = {
                     dictionary realitykit = {
                         float2 positionInSubgraph = (-725.2588, 351.55255)
-                        float2 sizeInSubgraph = (138.5, 53)
+                        float2 sizeInSubgraph = (139, 53)
                         int stackingOrderInSubgraph = 2272
                     }
                 }
             )
-            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
 
             over "Dot"
             {
@@ -1252,17 +1322,17 @@ def Xform "Root"
 
             over "multiply"
             {
-                float2 ui:nodegraph:node:size = (60, 36)
+                float2 ui:nodegraph:node:size = (61, 36)
             }
 
             over "add"
             {
-                float2 ui:nodegraph:node:size = (61.5, 36.5)
+                float2 ui:nodegraph:node:size = (63, 37)
             }
 
             over "PreviewSurface"
             {
-                float2 ui:nodegraph:node:size = (148.5, 199)
+                float2 ui:nodegraph:node:size = (149, 199)
             }
 
             over "Mix"
@@ -1272,38 +1342,48 @@ def Xform "Root"
 
             over "Swizzle"
             {
-                float2 ui:nodegraph:node:size = (133.5, 40)
+                float2 ui:nodegraph:node:size = (133, 40)
             }
 
             over "Swizzle_1"
             {
-                float2 ui:nodegraph:node:size = (145.5, 53)
+                float2 ui:nodegraph:node:size = (145, 53)
             }
 
             over "Multiply_1"
             {
-                float2 ui:nodegraph:node:size = (60, 36)
+                float2 ui:nodegraph:node:size = (61, 36)
             }
 
             over "BaseColor"
             {
-                float2 ui:nodegraph:node:size = (158.5, 235)
+                float2 ui:nodegraph:node:size = (159, 235)
             }
 
             over "Roughness"
             {
-                float2 ui:nodegraph:node:size = (158.5, 235)
+                float2 ui:nodegraph:node:size = (159, 235)
             }
 
             over "Metallic"
             {
-                float2 ui:nodegraph:node:size = (158.5, 235)
+                float2 ui:nodegraph:node:size = (159, 235)
             }
 
             over "Normal"
             {
-                float2 ui:nodegraph:node:size = (158.5, 235)
+                float2 ui:nodegraph:node:size = (159, 235)
             }
+        }
+
+        def "wolfSkull" (
+            active = true
+            prepend references = @wolfSkull.usdz@
+        )
+        {
+            float3 xformOp:scale = (0.01, 0.01, 0.01)
+            float3 xformOp:translate = (0, -0.1, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
         }
     }
 }

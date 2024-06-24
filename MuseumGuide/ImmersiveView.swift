@@ -74,7 +74,7 @@ struct ImmersiveView: View {
                           attachmentEntity.parent == nil else { return }
                     
                     entity.addChild(attachmentEntity)
-                    attachmentEntity.setPosition([0.0, 0.6, 0.0], relativeTo: entity)
+                    attachmentEntity.setPosition([0.0, 0.6, -0.1], relativeTo: entity)
                 }
             } attachments: {
                 ForEach(attachmentsProvider.sortedTagViewPairs, id: \.tag) { pair in
@@ -130,7 +130,7 @@ struct ImmersiveView: View {
     private func createFloor(for y: Float, isDebug: Bool = false) -> ModelEntity {
         let showCaseFloor = ModelEntity(
             mesh: .generatePlane(width: 0.95, depth: 0.35),
-            materials: [SimpleMaterial(color: .random, isMetallic: true)]
+            materials: [OcclusionMaterial()]
         )
         showCaseFloor.generateCollisionShapes(recursive: false)
         showCaseFloor.components[PhysicsBodyComponent.self] = PhysicsBodyComponent(massProperties: .default, mode: .static)
