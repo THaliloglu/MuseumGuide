@@ -16,7 +16,7 @@ Welcome to the MuseumGuide VisionOS project! This project is an interactive muse
 
 ## Demo Recording
 
-Check out our [demo recording](https://www.icloud.com/iclouddrive/082HsoJ0ZG61msEGP_Ort8Erg#VisionOSBootcamp) to see the MuseumGuide app in action!
+Check out our [demo recording](https://youtu.be/RW4fV4Bxc9E) to see the MuseumGuide app in action!
 
 ## Overview
 
